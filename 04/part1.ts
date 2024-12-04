@@ -27,11 +27,13 @@ function inBounds(x: number, y: number) {
 
 const WORD = 'XMAS';
 function checkDir(x: number, y: number, dir: Vector) {
+    //if (x === 5 && y === 0) console.log(x, y, dir);
     if (!inBounds(x + dir[0]*(WORD.length-1), y + dir[1]*(WORD.length-1))) return false;
+    //if (x === 5 && y === 0) console.log(x, y, dir, 'in bounds');
     for (let pos = 0; pos < WORD.length; pos += 1) {
         const px = x + dir[0] * pos;
         const py = y + dir[1] * pos;
-        if (grid[y][x] !== WORD[pos]) return false;
+        if (grid[py][px] !== WORD[pos]) return false;
     }
     return true;
 }
